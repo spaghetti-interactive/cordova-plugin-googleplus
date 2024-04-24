@@ -318,6 +318,9 @@ public class GooglePlus extends CordovaPlugin implements GoogleApiClient.OnConne
      * @param signInResult - the GoogleSignInResult object retrieved in the onActivityResult method.
      */
     private void handleSignInResult(final GoogleSignInResult signInResult) {
+        if(this.savedCallbackContext == null) {
+            return;
+        }
         if (this.mGoogleApiClient == null) {
             savedCallbackContext.error("GoogleApiClient was never initialized");
             return;
